@@ -1,6 +1,12 @@
 # trainees2024
 R code for doing trainee follow-up using the Scopus author APIs
 
+## Setting up
+The code in this repo uses two sets of custom R functions, `process_qvr_data` and `scopus_author_dev`. The QVR processing functions are documented in my QVR Processing repo, but are also included here. The Scopus author API functions use the `httr` and `XML` packages, so you'll probably need to install the `XML` package for them to work. They are also expecting your Scopus API key to be saved in your .Renviron file, or in your current R environment, as `SCOPUS_API_KEY`. 
+
+The code below is an ideal case that assumes that all of your search strings work perfectly. In reality, that often doesn't happen, so I've also included an expanded version of this code `trn_followup_2024.r` that handles cases when the `lapply()` functions run into an http error and exit before getting all of the data.
+
+## Running the code
 **Note:** the filepaths in this repo are local to my computer (i.e. I did't use relative filepaths), so you'll need to change all of them to match your local environment. 
 
 First, read in the trainee data files from QVR, combine them into a single data frame, and sort them by training fiscal year and profile person ID.
