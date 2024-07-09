@@ -7,7 +7,7 @@ The code in this repo uses two sets of custom R functions, `process_qvr_data` an
 The code below is an ideal case that assumes that all of your search strings work perfectly. In reality, that often doesn't happen, so I've also included an expanded version of this code `trn_followup_2024.r` that handles cases when the `lapply()` functions run into an http error and exit before getting all of the data.
 
 ## Running the code
-**Note:** the filepaths in this repo are local to my computer (i.e. I did't use relative filepaths), so you'll need to change all of them to match your local environment. 
+**Note:** the filepaths in this repo are local to my computer (i.e. I didn't use relative filepaths), so you'll need to change all of them to match your local environment. 
 
 First, read in the trainee data files from QVR, combine them into a single data frame, and sort them by training fiscal year and profile person ID.
 ```r
@@ -87,7 +87,7 @@ write.csv(scopus2, file = "projects/trainee followup/2024_trainees_part2.csv", r
 Then merge both sets of potential matches into a single data frame and retrieve additional information for each potential match from the scopus author retrieval API.
 ```r
 scopus_search <- rbind(scopus1, scopus2)
-rm(scopus1a, scopus2a)
+#rm(scopus1a, scopus2a)
 scopus_retrieve <- authorRetrieve(scopus_search$authID[!is.na(scopus_search$authID)], outfile = "projects/trainee followup/search data 2024/trainee_retrieve.txt")
 ```
 
